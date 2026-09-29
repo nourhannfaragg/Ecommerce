@@ -1,0 +1,29 @@
+<section class="py-14">
+    <div class="container">
+        <h1 class="text-center text-5xl mb-2">Details Products: </h1>
+
+        <div class="grid sm:grid-cols-12 items-center gap-4">
+
+            <div class="col-span-3">
+                    <img [src]="productDetails.imageCover" class="w-full border border-red-700 rounded-lg" [alt]="productDetails.title" >
+            </div>
+
+            <div class="col-span-9">
+                <h2 class="text-2xl">{{productDetails.title}}</h2>
+                <P class="text-gray-700 text-sm my-2"> {{productDetails.description}} </P>
+                <span> {{productDetails.category.name}} </span>
+                <div class="flex items-center justify-between">
+                    <span> {{productDetails.price}} EGP </span>
+                    <span> <i class="fas fa-star text-yellow-500"></i>  {{productDetails.ratingsAverage}}</span>
+                </div>
+
+                <button [routerLink]="['/cart' ]" (click)="getProductSpicificItemTOCart(productDetails._id)" class=" bg-red-400 border rounded-lg border-red-900 cursor-pointer text-white
+             py-2 mt-2 w-full hover:bg-red-700 transition-all duration:300 disabled:bg-gray-600 
+             disabled:cursor-not-allowed translate-y-[120%] group-hover/card:translate-y-0 ">Add To Cart</button>
+            </div>
+
+         </div>
+     </div>
+    
+
+</section>

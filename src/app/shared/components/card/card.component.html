@@ -1,0 +1,23 @@
+
+
+<div class="card overflow-hidden border border-red-800 p-1 shadow-red-800 shadow-lg relative rounded  group/card ">
+          <div [routerLink]="['/details' , product.slug   , product.id]" class="cursor-pointer">
+              <img [src]="product.imageCover" class="w-full h-[200px] rounded-t" [alt]="product.title">
+            <h3 class=" pt-3 text-sm text-red-500">Title: {{ product.category.name}}</h3>
+            <h4 class="line-clamp-1 text-xl text-red-500"> Name: {{product.title}}</h4>
+            <div class="flex justify-between items-center text-red-500">
+                <span> price:{{product.price}} </span>
+                <span> <i class="fa-solid fa-star text-yellow-600 "></i> {{product.ratingsAverage}} </span>
+            </div>
+          </div>
+          <div class=" flex items-center justify-between space-x-4">
+            <a (click)="addProductItemToWishlist(product._id)" >
+              <i class=" fas fa-heart text-red-500 cursor-pointer text-lg"></i>
+            </a>
+
+            <button (click)="addProductItemToCart(product._id)" class=" bg-red-300 border rounded-lg border-red-900 cursor-pointer text-white
+             py-2 mt-2 w-full hover:bg-red-800 transition-all duration:300 disabled:bg-gray-600 
+             disabled:cursor-not-allowed translate-y-[120%] group-hover/card:translate-y-0 ">Add Card</button>
+          </div>
+            
+</div>

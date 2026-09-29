@@ -1,0 +1,29 @@
+
+<section class="bg-red-100 py-16 border-gray-400">
+
+   <div class="container mx-auto">
+  <input  [(ngModel)]="text" placeholder="Search By Title....."  type="search" class=" block  border rounded-lg border-red-600 w-70  mx-auto my-10 ">
+
+      <h2 class="text-2xl  text-red-600 p-3"> popular Products :</h2>
+      <div class="parent mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+
+       @for (product of productList | paginate: { id: 'foo',itemsPerPage: pageSize, currentPage: p, totalItems: total } 
+       |search:text ; track product.id) {
+        
+       <app-card [product]="product"/>
+        
+    }
+      
+   </div>
+
+
+   <div class="flex justify-center mt-4">
+    <pagination-controls class="my-pagination" id="foo"
+                      (pageChange)="getAllPrductsData($event)"
+                      >
+</pagination-controls>
+   </div>
+
+   </div>
+
+</section>

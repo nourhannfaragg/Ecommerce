@@ -1,0 +1,20 @@
+
+<section class=" bg-red-100 py-10">
+    <div class=" container mx-auto">
+        <div class=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            @for (item of wishlistDetails; track item._id) {
+                <div class=" overflow-hidden border border-red-300 shadow-lg shadow-red-800 p-1 relative rounded-lg ">
+                <img [src]="item.imageCover" class=" w-full h-[200px] rounded-t" [alt]="item.title">
+                <h3 class="text-xl text-red-600 pt-2 line-clamp-1">Name: {{item.title}} </h3>
+                <h3 class="text-xl text-red-600 pt-2 line-clamp-1">Brand: {{item.brand.name}} </h3>
+                <div class=" flex items-center justify-between space-x-4">
+                    <button (click)="deleteProductFromWishlist(item._id)" class=" cursor-pointer">
+                        <i class="fas fa-trash-can"></i>
+                    </button>
+                    <span class="text-xl text-red-600 "> {{item.price}} EGP</span>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

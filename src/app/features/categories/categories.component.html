@@ -1,0 +1,16 @@
+<section class="bg-red-100 py-16 border-gray-400">
+    <div class="container mx-auto">
+        <input [(ngModel)]="text" placeholder="Search By Name....."  type="search" class=" block  border rounded-lg border-red-600 w-72 p-2 mx-auto my-10 ">
+
+        <h2 class="text-red-600 text-2xl p-5"> Popular Categories :</h2>
+        <div class=" parent grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+            
+            @for (item of categoreDetails |search:text ; track item._id ) {
+                <div class="card overflow-hidden border border-red-300 shadow-lg shadow-red-800 p-1 relative rounded-lg  group/card ">
+                <img [src]="item.image" class="w-full h-[200px] rounded-t" [alt]="item.name">
+                <h3 class="line-clamp-1 text-xl text-red-600 pt-2">Name: {{item.name}} </h3>
+            </div>
+            }
+        </div>
+    </div>
+</section>

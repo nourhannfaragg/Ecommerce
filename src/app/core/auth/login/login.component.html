@@ -1,0 +1,79 @@
+<section class="bg-red-200 border border-red-300 rounded-lg p-4 shadow-lg shadow-red-800 md:w-1/2 my-14 mx-auto ">
+    <h1 class="text-center mb-3 text-white text-3xl">login Now</h1>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()" >
+
+         <div class="relative mb-2">
+          <input formControlName="email" type="email" id="email" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-red-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500
+           focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+          <label for="email" class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600
+           peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 
+           rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email</label>
+
+            @let emailControl = loginForm.get('email');
+           	@if (emailControl?.errors && emailControl?.touched) {
+                <div class=" flex p-4 mb-4 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                <ul class="mt-1.5 list-disc list-inside ">
+                    @if (emailControl?.getError('required')) {
+                        <li>Input is required.</li>
+                    }
+                    @else if (emailControl?.getError('email')) {
+                    <li>Please enter a vaild email address</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+         <div class="relative mb-2">
+          <input formControlName="password" type=" flag? 'password' : 'text' " id="password" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-red-200 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500
+           focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+          <label for="password" class="absolute text-sm text-black duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600
+           peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 
+           rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
+
+           <span (click)="flag = !flag" class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer ">
+            @if(flag){
+                <i class="fas fa-eye" ></i>
+            }
+            @else {
+                <i class="fas fa-eye-slash" ></i>
+            }
+           </span>
+
+           @let passwordControl = loginForm.get('password');
+           	@if (passwordControl?.errors && passwordControl?.touched) {
+                <div class=" flex p-4 mb-4 text-sm text-red-500 rounded-lg bg-red-50" role="alert">
+                <ul class="mt-1.5 list-disc list-inside ">
+                    @if (passwordControl?.getError('required')) {
+                        <li>Input is required.</li>
+                    }
+                    @else if (passwordControl?.getError('pattern')) {
+                         <li>Custome field should match the pattern</li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <div class=" flex items-center space-x-8 ">
+
+            <a [routerLink]= "['/forget']" class="text-sky-400  cursor-pointer" >ForgerPassword?</a>
+          <button [disabled]="isLoading" class=" bg-red-400 border rounded-lg border-red-900 cursor-pointer text-white
+             py-2  w-full   disabled:bg-gray-600 
+             disabled:cursor-not-allowed " type="submit">login
+             @if(isLoading){
+                <span> <i class="fas fa-spinner animate-spin"></i> </span>
+             }
+            </button>
+        </div>
+             
+             @if(msgError){
+                <p class="text-center text-red-900 p-4 bg-red-200"></p>
+             }
+
+
+    </form>
+
+</section>
+
